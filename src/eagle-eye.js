@@ -1,7 +1,14 @@
-import gpio from "rpi-gpio";
+/*
+ * Author: Arvid Bräne <arvidbrane@gmail.com>
+ */
+
+//import network from "networkCommunication/network-communication";
 
 
-gpio.on("change", function(channel, value) {
-    console.log("Channel " + channel + " value is now " + value);
-});
-gpio.setup(7, gpio.DIR_IN, gpio.EDGE_BOTH); //pin 7, not gpio 7!!
+const state = {
+    armed: true
+};
+
+if (state.armed) {
+    console.log("system is armed, I will beep loud if any human pressence is detected");
+}

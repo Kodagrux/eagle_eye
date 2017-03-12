@@ -1,14 +1,35 @@
 "use strict";
 
-var _rpio = require("rpio");
+var _http = require("http");
 
-var _rpio2 = _interopRequireDefault(_rpio);
+var _http2 = _interopRequireDefault(_http);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-//var rpio = require('rpio');
+/*
+ * Author: Arvid Bräne <arvidbrane@gmail.com>
+ */
 
-console.log("arvid");
+//import network from "networkCommunication/network-communication";
 
-_rpio2["default"].open(11, _rpio2["default"].INPUT);
-console.log("Pin 11 is currently set " + (_rpio2["default"].read(11) ? "high" : "low"));
+
+var state = {
+    armed: true
+};
+
+if (state.armed) {
+    console.log("system is armed, I will beep loud if any human pressence is detected");
+}
+
+_http2["default"].createServer(function (request, response) {
+    // Send the HTTP header
+    // HTTP Status: 200 : OK
+    // Content Type: text/plain
+    response.writeHead(200, { "Content-Type": "text/plain" });
+
+    // Send the response body as "Hello World"
+    response.end("Hello World\n");
+}).listen(8081);
+
+// Console will print the message
+console.log("Server running at http://127.0.0.1:8081/");
