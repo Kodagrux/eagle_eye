@@ -1,20 +1,19 @@
 /*
- * Author: Arvid Bräne <arvidbrane@gmail.com>
+ * Author: Arvid Bräne <arvidbrane@gmail.com>, Albin Hübsch <albin.hubsch@gmail.com>
  */
 
-import NetworkCommunication from "./networkCommunication/network-communication";
-//import MotionSensor from "./motionSensor/motion-sensor";
+import { MotionSensor } from './motionSensor';
 
 const state = {
     armed: false
+};
+
+const _motion = ()=>{
+    console.log('Motion detected');
 };
 
 if (state.armed) {
     console.log("system is armed, I will beep loud if any human pressence is detected");
 }
 
-var network = new NetworkCommunication();
-network.createServer();
-
-//var sensor = new MotionSensor();
-//sensor.readValue();
+MotionSensor(_motion);
