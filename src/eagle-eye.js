@@ -2,13 +2,19 @@
  * Author: Arvid Bräne <arvidbrane@gmail.com>
  */
 
-//import network from "networkCommunication/network-communication";
-
+import NetworkCommunication from "./networkCommunication/network-communication";
+//import MotionSensor from "./motionSensor/motion-sensor";
 
 const state = {
-    armed: true
+    armed: false
 };
 
 if (state.armed) {
     console.log("system is armed, I will beep loud if any human pressence is detected");
 }
+
+var network = new NetworkCommunication();
+network.createServer();
+
+//var sensor = new MotionSensor();
+//sensor.readValue();
