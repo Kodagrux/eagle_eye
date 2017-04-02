@@ -3,6 +3,16 @@
  */
 
 import { MotionSensor } from './motionSensor';
+import fs from 'fs';
+
+const configFile = 'system_configuration.json';
+
+
+// Load Device configuration data
+if (fs.existsSync(configFile)) {
+    const sysConfig = JSON.parse(fs.readFileSync('system_configuration.json', 'utf8'));
+}
+
 
 const state = {
     armed: false

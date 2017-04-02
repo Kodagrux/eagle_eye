@@ -1,25 +1,34 @@
-"use strict";
+'use strict';
 
-var _networkCommunication = require("./networkCommunication/network-communication");
+var _motionSensor = require('./motionSensor');
 
-var _networkCommunication2 = _interopRequireDefault(_networkCommunication);
+var _fs = require('fs');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _fs2 = _interopRequireDefault(_fs);
 
-//import MotionSensor from "./motionSensor/motion-sensor";
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+/*
+ * Author: Arvid Bräne <arvidbrane@gmail.com>, Albin Hübsch <albin.hubsch@gmail.com>
+ */
+
+var configFile = 'system_configuration.json';
+
+// Load Device configuration data
+if (_fs2['default'].existsSync(configFile)) {
+    var sysConfig = JSON.parse(_fs2['default'].readFileSync('system_configuration.json', 'utf8'));
+}
 
 var state = {
     armed: false
-}; /*
-    * Author: Arvid Bräne <arvidbrane@gmail.com>
-    */
+};
+
+var _motion = function _motion() {
+    console.log('Motion detected');
+};
 
 if (state.armed) {
     console.log("system is armed, I will beep loud if any human pressence is detected");
 }
 
-var network = new _networkCommunication2["default"]();
-network.createServer();
-
-//var sensor = new MotionSensor();
-//sensor.readValue();
+(0, _motionSensor.MotionSensor)(_motion);

@@ -7,11 +7,21 @@ import gpio from "rpi-gpio";
 export const MotionSensor = (onChangeCallback)=>{
 
     /**
-     * [sensorState description]
+     * Define settings for the sensor behaviour
+     * @type {Object}
+     */
+    const sensorSettings = {
+        triggerTimeout: 10 * 1000, // Timeout between triggers in Milliseconds
+        move: 1 // Value from sensor when move is detected
+    };
+
+    /**
+     * Current state of this sensor
      * @type {Object}
      */
     const sensorState = {
         triggerLimit: 2,
+        lastCommit: null,
     };
 
     // Setup gpio
@@ -19,10 +29,17 @@ export const MotionSensor = (onChangeCallback)=>{
 
     // Listen for changes
     gpio.on("change", (channel, value)=>{
+
         console.log("Channel " + channel + " value is now " + value);
 
-        // Callback function on change
-        onChangeCallback();
+        if (value == sensorSettings.move && sensorState.lastCommit + sensorSettings.triggerTimeout < new Date.now() ) {
+
+            sensorState.lastCommit = new Date.now();
+
+            // Callback function on change
+            onChangeCallback();
+        }
+
     });
 
 };
