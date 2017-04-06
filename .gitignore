@@ -46,3 +46,4 @@ notes.md
 
 # Ignoring dist
 dist
+/dist/
