@@ -4,11 +4,11 @@
   "description": "Sensor module for EagleEye",
   "main": "src/eagle-eye.js",
   "scripts": {
-    "test": "npm run test-local",
-    "test-remote": "npm run prepublish && node dist/eagle-eye.js",
-    "test-local": "npm run prepublish && node dist/eagle-eye.js",
+    "test": "yarn run test-local",
+    "test-remote": "yarn run prepublish && node dist/eagle-eye.js",
+    "test-local": "yarn run prepublish && node dist/eagle-eye.js",
     "build:commonjs": "BABEL_ENV=commonjs babel src --out-dir dist",
-    "prepublish": "npm run build:commonjs",
+    "prepublish": "yarn run build:commonjs",
     "arvid": "echo 'hej'"
   },
   "repository": {
