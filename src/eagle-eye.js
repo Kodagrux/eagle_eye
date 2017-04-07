@@ -4,33 +4,19 @@
  * @Email:  albin.hubsch@gmail.com
  * @Project: Eagle Eye
  * @Last modified by:   albinhubsch
- * @Last modified time: 2017-04-06T16:47:27+02:00
+ * @Last modified time: 2017-04-07T16:16:49+02:00
  */
 
 
 
+import { Settings } from './system'
 import { MotionSensor } from './motionSensor'
 import fs from 'fs'
+import { motionEvent } from './callbacks'
+import { ServerEye } from './server'
 
-const configFile = 'system_configuration.json'
+// Start up local eagle-eye server
+ServerEye()
 
-
-// Load Device configuration data
-if (fs.existsSync(configFile)) {
-    const sysConfig = JSON.parse(fs.readFileSync('system_configuration.json', 'utf8'))
-}
-
-
-const state = {
-    armed: false
-}
-
-const _motion = ()=>{
-    console.log('Motion detected')
-}
-
-if (state.armed) {
-    console.log("system is armed, I will beep loud if any human pressence is detected")
-}
-
-MotionSensor(_motion)
+// Start Motion sensor
+MotionSensor(Settings.motionSensor, motionEvent)

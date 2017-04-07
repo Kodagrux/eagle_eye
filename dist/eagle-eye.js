@@ -1,34 +1,28 @@
 'use strict';
 
-var _motionSensor = require('./motionSensor');
+var _system = require('./system');
 
 var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
+var _callbacks = require('./callbacks');
+
+var _server = require('./server');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-/*
- * Author: Arvid Bräne <arvidbrane@gmail.com>, Albin Hübsch <albin.hubsch@gmail.com>
+/**
+ * @Author: Albin Hubsch <albinhubsch>
+ * @Date:   2017-03-21T20:01:45+01:00
+ * @Email:  albin.hubsch@gmail.com
+ * @Project: Eagle Eye
+ * @Last modified by:   albinhubsch
+ * @Last modified time: 2017-04-07T15:54:14+02:00
  */
 
-var configFile = 'system_configuration.json';
+(0, _server.ServerEye)();
 
-// Load Device configuration data
-if (_fs2['default'].existsSync(configFile)) {
-    var sysConfig = JSON.parse(_fs2['default'].readFileSync('system_configuration.json', 'utf8'));
-}
+// MotionSensor(Settings.motionSensor, motionEvent)
 
-var state = {
-    armed: false
-};
-
-var _motion = function _motion() {
-    console.log('Motion detected');
-};
-
-if (state.armed) {
-    console.log("system is armed, I will beep loud if any human pressence is detected");
-}
-
-(0, _motionSensor.MotionSensor)(_motion);
+// import { MotionSensor } from './motionSensor'

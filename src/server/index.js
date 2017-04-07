@@ -4,7 +4,7 @@
  * @Email:  albin.hubsch@gmail.com
  * @Project: Eagle Eye
  * @Last modified by:   albinhubsch
- * @Last modified time: 2017-04-06T16:47:11+02:00
+ * @Last modified time: 2017-04-07T16:00:24+02:00
  */
 
 
@@ -12,17 +12,27 @@
 import express from 'express'
 import uuid from 'uuid'
 
-const app = express()
+export const ServerEye = ()=>{
 
-/**
- * Install this eagle eye
- */
-app.get('/install', (req, res)=>{
+    const app = express()
 
-    //
-    res.send(uuid.v4())
-})
+    app.get('/', (req, res)=>{
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
-})
+        //
+        res.send(uuid.v4())
+    })
+
+    /**
+     * Install this eagle eye
+     */
+    app.get('/install', (req, res)=>{
+
+        //
+        res.send(uuid.v4())
+    })
+
+    app.listen(3000, function () {
+        console.log('Example app listening on port 3000!')
+    })
+
+}

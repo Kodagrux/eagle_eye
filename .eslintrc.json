@@ -19,7 +19,7 @@
             "unix"
         ],
         "semi": [
-            "error",
+            "warn",
             "never"
         ],
         "no-unused-vars": [
