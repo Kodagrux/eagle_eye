@@ -48,3 +48,5 @@ system_configuration.json
 # Ignoring dist
 dist
 /dist/
+
+dist/eagle-eye.js
