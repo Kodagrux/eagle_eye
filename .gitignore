@@ -47,3 +47,5 @@ notes.md
 # Ignoring dist
 dist
 /dist/
+
+dist/eagle-eye.js
