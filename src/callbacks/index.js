@@ -4,14 +4,14 @@
  * @Email:  albin.hubsch@gmail.com
  * @Project: Eagle Eye
  * @Last modified by:   albinhubsch
- * @Last modified time: 2017-04-07T16:14:21+02:00
+ * @Last modified time: 2017-04-09T11:02:54+02:00
  */
 
 
 
 import axios from 'axios'
 import moment from 'moment'
-import { SystemConfiguration } from '../settings'
+import { SystemConfiguration } from '../system'
 
 export const motionEvent = ()=>{
 
