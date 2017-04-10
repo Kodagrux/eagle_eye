@@ -28,8 +28,10 @@ export const ServerEye = ()=>{
     app.get('/install', (req, res)=>{
 
         //
+        console.log("User wants to install")
         res.send(uuid.v4())
     })
+
 
     app.listen(3000, function () {
         console.log('Example app listening on port 3000!')

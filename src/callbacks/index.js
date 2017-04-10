@@ -28,7 +28,7 @@ export const motionEvent = ()=>{
             // * * *
             // MAKE THEM SUFFER
             // * * *
-        }else {
+        } else {
             // Discuss what to do here if no response or error
         }
     })
